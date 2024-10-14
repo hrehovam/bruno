@@ -42,7 +42,7 @@ const DefaultTab = ({ setTab }) => {
   );
 };
 
-const EnvironmentSettings = ({ collection, onClose }) => {
+const EnvironmentSettings = ({ collection }) => {
   const [isModified, setIsModified] = useState(false);
   const { environments } = collection;
   const [selectedEnvironment, setSelectedEnvironment] = useState(null);
@@ -65,15 +65,15 @@ const EnvironmentSettings = ({ collection, onClose }) => {
   }
 
   return (
-    <Modal size="lg" title="Environments" handleCancel={onClose} hideFooter={true}>
-      <EnvironmentList
+    <StyleWrapper classname="flex flex-col h-full relative px-4 py-4">
+     <EnvironmentList
         selectedEnvironment={selectedEnvironment}
         setSelectedEnvironment={setSelectedEnvironment}
         collection={collection}
         isModified={isModified}
         setIsModified={setIsModified}
       />
-    </Modal>
+    </StyleWrapper>
   );
 };
 

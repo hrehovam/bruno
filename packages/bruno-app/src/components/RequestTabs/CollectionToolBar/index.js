@@ -1,6 +1,6 @@
 import React from 'react';
 import { uuid } from 'utils/common';
-import { IconFiles, IconRun, IconEye, IconSettings } from '@tabler/icons';
+import { IconFiles, IconRun, IconEye, IconSettings, IconTool } from '@tabler/icons';
 import EnvironmentSelector from 'components/Environments/EnvironmentSelector';
 import GlobalEnvironmentSelector from 'components/GlobalEnvironments/EnvironmentSelector';
 import { addTab } from 'providers/ReduxStore/slices/tabs';
@@ -41,6 +41,15 @@ const CollectionToolBar = ({ collection }) => {
       })
     );
   };
+  const viewEnvironmentSettings = () => {
+    dispatch(
+      addTab({
+        uid: uuid(),
+        collectionUid: collection.uid,
+        type: 'environment-settings'
+      })
+    );
+  };
 
   return (
     <StyledWrapper>
@@ -68,12 +77,17 @@ const CollectionToolBar = ({ collection }) => {
               <IconSettings className="cursor-pointer" size={18} strokeWidth={1.5} onClick={viewCollectionSettings} />
             </ToolHint>
           </span>
+          <span className="mr-3">
+            <ToolHint text="Enviromnemt settings" toolhintId="EnvironmentSettingsToolhintId">
+              <IconTool className="cursor-pointer" size={18} strokeWidth={1.5} onClick={viewEnvironmentSettings} />
+            </ToolHint>
+          </span>
           <span>
             <ToolHint text="Global Environments" toolhintId="GlobalEnvironmentsToolhintId">
               <GlobalEnvironmentSelector />
             </ToolHint>
           </span>
-          
+
           <EnvironmentSelector collection={collection} />
         </div>
       </div>
