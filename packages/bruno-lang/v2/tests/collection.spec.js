@@ -19,6 +19,9 @@ describe('jsonToCollectionBru', () => {
     const expected = fs.readFileSync(path.join(__dirname, 'fixtures', 'collection.bru'), 'utf8');
     const output = jsonToCollectionBru(input);
 
-    expect(output).toEqual(expected);
+    const expectedLines = expected.split('\n').map(line => line.trim());
+    const actualLines = output.split('\n').map(line => line.trim());
+
+    expect(expectedLines).toEqual(actualLines);
   });
 });

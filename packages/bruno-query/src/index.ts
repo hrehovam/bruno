@@ -25,7 +25,7 @@ function normalize(value: any) {
  *
  * Once a value is found will not recurse further into that value.
  */
-function getValue(source: any, prop: string, deep = false): any {
+export function getValue(source: any, prop: string, deep = false): any {
   if (typeof source !== 'object') return;
 
   let value;

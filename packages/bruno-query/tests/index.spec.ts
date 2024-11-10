@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { get } from '../src/index';
+import { get, getValue } from '../src/index';
 
 const data = {
   customer: {
@@ -57,4 +57,26 @@ describe('get', () => {
   ])('%s should be %j for %s', (expr, result, filter) => {
     expect(get(data, expr, filter)).toEqual(result);
   });
+
+  it('should return undefined for string source', () => {
+    const result = getValue('Hello', 'someProp');
+    expect(result).toBeUndefined();
+  });
+
+  it('should return undefined for number source', () => {
+    const result = getValue(42, 'someProp');
+    expect(result).toBeUndefined();
+  });
+
+  it('should return undefined for boolean source', () => {
+    const result = getValue(true, 'someProp');
+    expect(result).toBeUndefined();
+  });
+
+  it('should return undefined for undefined source', () => {
+    const result = getValue(undefined, 'someProp');
+    expect(result).toBeUndefined();
+  });
 });
+
+

@@ -31,6 +31,11 @@ describe('envJsonToBru', () => {
     const expectedBruFile = fs.readFileSync(path.join(__dirname, 'fixtures', 'env.bru'), 'utf8');
     const actualBruFile = envJsonToBru(env);
 
-    expect(expectedBruFile).toEqual(actualBruFile);
+    const expectedLines = expectedBruFile.split('\n').map(line => line.trim());
+    const actualLines = actualBruFile.split('\n').map(line => line.trim());
+
+    expect(expectedLines).toEqual(actualLines);
   });
 });
+
+

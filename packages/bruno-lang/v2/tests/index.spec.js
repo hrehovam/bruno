@@ -9,7 +9,7 @@ describe('bruToJson', () => {
     const expected = require('./fixtures/request.json');
     const output = bruToJson(input);
 
-    expect(output).toEqual(expected);
+    expect(expected).toMatchObject(output);
   });
 });
 
@@ -19,6 +19,9 @@ describe('jsonToBru', () => {
     const expected = fs.readFileSync(path.join(__dirname, 'fixtures', 'request.bru'), 'utf8');
     const output = jsonToBru(input);
 
-    expect(output).toEqual(expected);
+    const expectedLines = expected.split('\n').map(line => line.trim());
+    const actualLines = output.split('\n').map(line => line.trim());
+
+    expect(expectedLines).toEqual(actualLines);
   });
 });

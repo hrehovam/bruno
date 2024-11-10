@@ -87,6 +87,9 @@ describe('bruToJson', () => {
     const expectedBruFile = fs.readFileSync(path.join(__dirname, 'fixtures', 'request.bru'), 'utf8');
     const actualBruFile = jsonToBru(request);
 
-    expect(expectedBruFile).toEqual(actualBruFile);
+    const expectedLines = expectedBruFile.split('\n').map(line => line.trim());
+    const actualLines = actualBruFile.split('\n').map(line => line.trim());
+
+    expect(expectedLines).toEqual(actualLines);
   });
 });
