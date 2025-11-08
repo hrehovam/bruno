@@ -102,11 +102,11 @@ const EnvironmentList = ({ selectedEnvironment, setSelectedEnvironment, collecti
       <div className="flex">
         <div>
           {switchEnvConfirmClose && (
-            <div className="flex items-center justify-between tab-container px-1">
+            <div className="environment-list-divider">
               <ConfirmSwitchEnv onCancel={() => handleConfirmSwitch(false)} />
             </div>
           )}
-          <div className="environments-sidebar flex flex-col">
+          <div className="flex flex-col justify-around h-full">
             {environments &&
               environments.length &&
               environments.map((env) => (
