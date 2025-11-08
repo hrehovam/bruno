@@ -100,7 +100,7 @@ const EnvironmentList = ({ selectedEnvironment, setSelectedEnvironment, collecti
       {openManageSecretsModal && <ManageSecrets onClose={() => setOpenManageSecretsModal(false)} />}
 
       <div className="flex">
-        <div>
+        <div className="environment-list-divider">
           {switchEnvConfirmClose && (
             <div className="environment-list-divider">
               <ConfirmSwitchEnv onCancel={() => handleConfirmSwitch(false)} />
